@@ -5,11 +5,13 @@ pipeline {
             steps {
                 git url: 'https://github.com/juherryerda/test1', branch: 'master'
             }
-        }stage('Build Docker Image') {
+        }
+        stage('Build Docker Image') {
             steps {
                 sh 'docker build -t flask-api .'
             }
-        }stage('Run Docker Container') {
+        }
+        stage('Run Docker Container') {
             steps {
                 sh '''
                 docker stop flask-api || true
