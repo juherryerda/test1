@@ -5,7 +5,7 @@
         stages {
             stage('Checkout') {
                 steps {
-                    git 'https://github.com/YOUR_GITHUB_USERNAME/flask-app.git' // Replace with your repo
+                    git 'https://github.com/juherryerda/test1.git' // Replace with your repo
                 }
             }
             stage('Build') {
