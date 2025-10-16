@@ -1,6 +1,11 @@
     // Example Jenkinsfile
     pipeline {
-        agent any
+         agent {
+        docker {
+            image 'python:3.9-slim-buster' // Or any other suitable Python image
+            args '-u root' // If needed for installation commands
+        }
+    }
 
         stages {
             stage('Checkout') {
@@ -10,7 +15,6 @@
             }
             stage('Build') {
                 steps {
-                    sh 'apt install python3 python3-venv python3-pip'
                     sh 'python3 -m venv venv'
                     sh 'source venv/bin/activate'
                     sh 'pip install -r requirements.txt'
