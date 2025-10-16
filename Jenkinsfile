@@ -10,6 +10,7 @@
             }
             stage('Build') {
                 steps {
+                    sh 'apt install python3 python3-venv python3-pip'
                     sh 'python3 -m venv venv'
                     sh 'source venv/bin/activate'
                     sh 'pip install -r requirements.txt'
