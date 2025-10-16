@@ -1,22 +1,21 @@
-    // Example Jenkinsfile
-    pipeline {
-         agent any // Or specify a specific agent label
-    stages {
-        stage('Install Python') {
+pipeline {
+    agent anystages {
+        stage('Clone Repository') {
             steps {
-                sh 'apt-get update && apt-get install -y python3 python3-pip' // Example for Debian/Ubuntu
-                // Or for Red Hat/CentOS: sh 'sudo yum install -y python3 python3-pip'
+                git url: 'https://github.com/juherryerda/test1', branch: 'master'
             }
-        }
-        stage('Install Dependencies') {
+        }stage('Build Docker Image') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                sh 'docker build -t flask-api .'
             }
-        }
-        stage('Run') {
+        }stage('Run Docker Container') {
             steps {
-                sh 'python3 app.py'
+                sh '''
+                docker stop flask-api || true
+                docker rm flask-api || true
+                docker run -d -p 7002:7002 --name flask-api flask-api
+                '''
             }
         }
     }
-    }
+}
