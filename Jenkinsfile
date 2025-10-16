@@ -18,14 +18,14 @@
             stage('Test') {
                 steps {
                     // Add commands to run your tests here, e.g.,
-                    // sh 'pytest'
+                    sh 'pytest'
                 }
             }
             stage('Deploy') {
                 steps {
                     // Add deployment commands here, e.g.,
-                    // sh 'docker build -t my-flask-app .'
-                    // sh 'docker run -d -p 5000:5000 my-flask-app'
+                    sh 'docker build -t my-flask-app .'
+                    sh 'docker run -d -p 5000:5000 my-flask-app'
                 }
             }
         }
