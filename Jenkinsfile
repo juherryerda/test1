@@ -1,5 +1,6 @@
 pipeline {
-    agent anystages {
+    agent any
+    stages {
         stage('Clone Repository') {
             steps {
                 git url: 'https://github.com/juherryerda/test1', branch: 'master'
