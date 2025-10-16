@@ -4,7 +4,7 @@
     stages {
         stage('Install Python') {
             steps {
-                sh 'sudo apt-get update && sudo apt-get install -y python3 python3-pip' // Example for Debian/Ubuntu
+                sh 'apt-get update && apt-get install -y python3 python3-pip' // Example for Debian/Ubuntu
                 // Or for Red Hat/CentOS: sh 'sudo yum install -y python3 python3-pip'
             }
         }
